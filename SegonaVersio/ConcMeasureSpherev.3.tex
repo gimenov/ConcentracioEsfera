@@ -1,0 +1,926 @@
+%     AMS-LaTeX v.2 template for use with amsart
+%
+%     Remove any commented or uncommented macros you do not use.
+\documentclass{amsart}
+\usepackage[notref,notcite]{showkeys}
+\usepackage{extarrows}
+\usepackage{tikz-cd}
+\usetikzlibrary{matrix}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+ \newtheorem{corollary}[theorem]{Corollary}
+ \newtheorem{proposition}[theorem]{Proposition}
+ \newtheorem*{mainthm*}{Main Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%\numberwithin{equation}{section}
+
+%    Absolute value notation
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\D}{\operatorname{D}}
+\newcommand{\V}{\operatorname{V}}
+%\newcommand{\Hess}{\operatorname{Hess}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\C}{\operatorname{Cap}}
+\newcommand{\pC}{{\operatorname{Cap}}_{p}}
+%\newcommand{\R}{\operatorname{R_{eff}}}
+\newcommand{\gr}{\operatorname{grad}}
+\newcommand{\tors}{\operatorname{\mathcal{A}_{1}}}
+\newcommand{\erre}{\mathbb{R}}
+\newcommand{\ese}{\mathbb{S}}
+\newcommand{\Hp}{\mathbb{H}}
+\newcommand{\Lmod}{\operatorname{L}}
+\newcommand{\Nu}{\operatorname{\#}}
+\newcommand{\Trans}{\operatorname{T}}
+\newcommand{\pL}{{\operatorname{\Delta}}_{p}}
+\newcommand{\pLM}{{\operatorname{\Delta}}_{p}^{M}}
+\newcommand{\pLP}{{\operatorname{\Delta}}_{p}^{S}}
+\newcommand{\pLK}{{\operatorname{\Delta}}_{p}^{\mathbb{K}^{m,b}}}
+\newcommand{\pCap}{{\operatorname{Cap}}_{p}}
+\newcommand{\loc}{{\rm loc}}
+%\newcommand{\k}{\operatorname{\mathbb{K}^{m}(b)}}
+\newcommand{\Sup}{\operatorname{Sup}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\def\kan{I\!\!K^n(b)}
+\def\kal{I\!\!K^{n-1}(b)}
+\def\kam{I\!\!K^m(b)}
+\def\Han{\mathbb{H}^n(b)}
+\newcommand{\Om}{\Omega}
+\newcommand{\Sg}{\Sigma}
+\newcommand{\ptl}{\partial}
+
+\begin{document}
+
+\title[Measure Concentration]{Measure concentration for compact and minimal submanifolds of the Sphere}
+
+
+
+%    Remove any unused author tags.
+
+%    author one information
+
+%    author two information
+\author{Vicent Gimeno}
+\address{Department of Mathematics, Universitat Jaume I-IMAC,   E-12071, 
+Castell\'{o}, Spain}
+%\curraddr{}
+\email{gimenov@mat.uji.es}
+\author{Vicente Palmer}
+\address{Department of Mathematics, Universitat Jaume I-INIT,   E-12071, 
+Castell\'{o}, Spain}
+%\curraddr{}
+\email{palmer@mat.uji.es}
+
+\thanks{Research partially supported by  the Universitat Jaume I Research Program Project P1-1B2012-18, AEI-MINECO grant (FEDER) MTM2013-48371-C2-2-PDGI from Spanish Ministerio de Ciencia e Inovaci\'{o}n (MCINN), and by Generalitat Valenciana AICO/2021/2523}
+
+
+\subjclass[2010]{Primary 58C40, 35P15, (53A10)}
+
+\keywords{ measure concentration, isometric immersion, mean curvature, minimal submanifold}
+
+%\date{\today}
+
+\dedicatory{}
+
+
+
+%%%%%%%%%%%%%%%%%%
+%Abstract
+%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+Inspired by the equatorial concentration of measure phenomenon in the sphere $\ese^n(1)$, a result which is deduced from the general, (and intrinsic), concentration of measure in the sphere result presented by V. Milman and G. Schechtman in the lecture notes \cite{MS}, we describe in this paper an extrinsic equatorial concentration of measure satisfied by the closed, (compact without boundary), and minimal submanifolds $\Sigma^m$ isometrically immersed in the sphere $\ese^n(1)$.v3.\end{abstract}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%
+%Section: Introduction
+%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:intro}\
+%%%%%%%%%%%%%%%%%%%%%%
+
+The deep connection between the notions of measure of sets, (in its meaning of Riemannian volume), distance between points and dimension in a Riemannian manifold is illustrated by the concentration of intrinsic measure phenomenon in the sphere as it was presented  by V. Milman and G. Schechtman in the lecture notes \cite{MS}.
+
+In our opinion, an interesting question that can be raised from this result appears when considering it from an extrinsic point of view, that is, from the point of view of the submanifold theory. In this way, we are going to present a new notion of \lq\lq extrinsic equatorial measure concentration"  for submanifolds in the sphere, taking as a starting point the description of the intrinsic version of this phenomenon.  
+
+The way to do that , as we shall see in this introduction, is based in the following idea:  from the general  concentration of intrinsic measure phenomenon it can be deduced an intrinsic equatorial measure concentration property satisfied by the strips around the equators of the sphere, which can be roughly described by saying that for \lq\lq very large" dimension, almost all measure in the sphere concentrates in these strips sorrounding its equators. 
+
+Then, this property shall be used in its turn to introduce  the concept of \lq\lq extrinsic equatorial measure concentration"  for submanifolds in the sphere above mentioned: we shall study the relative volume of the intersection of a closed and minimal submanifold with the above mentioned strips around the equators of the ambient sphere, concluding, as in the intrinsic case, that for \lq\lq very large" dimension, almost all measure in the submanifold concentrates in their intersection with the  strips sorrounding its equators. 
+
+In the lecture notes by V. Milman and G. Schechtman \cite{MS} we can find the following concentration of (intrinsic) measure phenomenon in the sphere $\mathbb{S}^n(1)$:
+
+\begin{theorem}{Measure Concentration in the Sphere}\label{measurecon}
+\medskip
+
+If $A\subset \mathbb{S}^n(1)$ is a domain with ${\rm vol }(A)\geq \frac{1}{2} {\rm vol}(\mathbb{S}^n(1))$ then, for all $\epsilon \in [0,\frac{\pi}{2}]$, the  $\epsilon$-fattening of $A$ satisfies the inequality
+\begin{equation}\label{eq1}
+1 \geq \frac{{\rm vol}(A_\epsilon)}{{\rm vol}(\mathbb{S}^n(1))}\geq 1-\sqrt{\frac{\pi}{8}}e^{-\epsilon^2(n-1)/2}
+\end{equation}
+\noindent and hence, for all $\epsilon \in [0,\frac{\pi}{2}]$, 
+\begin{equation}\label{eq2}
+\lim_{n\to \infty} \frac{{\rm vol}(A_\epsilon)}{{\rm vol}(\mathbb{S}^n(1))}= 1
+\end{equation}
+\end{theorem}  
+
+Here, the $\epsilon$-fattening of $A$ is defined as
+$$A_\epsilon:=\left\{x\in \mathbb{S}^n(1)\, :\, {\rm dist}^{\mathbb{S}^n(1)}(x,A)<\epsilon\, \right\}
+$$
+ 
+ This concentration of measure in the sphere is a consequence of the P. Levy's isoperimetric inequality,  which it is stated in \cite{MS} as follows:
+
+ \begin{theorem}{ Isoperimetric Inequality}\label{isopineq}
+ \medskip
+ 
+For each $0<a<{\rm vol}(\mathbb{S}^n(1))$ and $\epsilon >0$,
+$$
+\min_{A\subset \mathbb{S}^n(1), {\rm vol}(A)=a}{\rm vol}(A_\epsilon)= {\rm vol}((B^{n,1}_{r(a)})_\epsilon)
+$$
+exists and it  is attained on any geodesic ball $B^{n,1}_{r(a)} \subseteq \mathbb{S}^n(1)$ such that
+$$
+{\rm vol}(B^{n,1}_{r(a)})=a.
+$$
+\end{theorem}
+
+
+  We are going to do some observations about how Theorem \ref{measurecon} comes from Theorem \ref{isopineq}. To see the idea behind  the proof of inequality (\ref{eq1}) we proceed in the following way: let us consider a  domain $A$ with ${\rm vol }(A)=a \geq \frac{1}{2} {\rm vol}(\mathbb{S}^n(1))$ and let us fix $\epsilon \in [0,\frac{\pi}{2}]$. Then,  applying Theorem \ref{isopineq}, and having into account that, fixed $\epsilon \in [0,\frac{\pi}{2}]$, the $\epsilon$-fattening of a geodesic ball $B^{n,1}_{r}$ is the ball $(B^{n,1}_{r})_{\epsilon}=B^{n,1}_{r+\epsilon}$, for all $r \in [0,\pi/2-\epsilon)$, it is easy to obtain the inequality
+  
+  $${\rm vol}(A_\epsilon) \geq {\rm vol}((B^{n,1}_{r(a)})_\epsilon)= {\rm vol}(B^{n,1}_{r(a)+\epsilon})\geq  {\rm vol}(B^{n,1}_{\pi/2+\epsilon})$$
+  
+\noindent where $B^{n,1}_{r(a)} \subseteq \mathbb{S}^n(1)$ is the $r(a)$-geodesic ball (with $r(a) \geq \pi/2$), such that
+$$
+{\rm vol}(B^{n,1}_{r(a)})=a \geq \frac{1}{2} {\rm vol}(\mathbb{S}^n(1))= {\rm vol}(B^{n,1}_{\pi/2})
+$$
+
+\noindent so we conclude
+
+
+$$
+\begin{aligned}
+\frac{{\rm vol}(A_\epsilon)}{{\rm vol}(\mathbb{S}^n(1))}&\geq \frac{{\rm vol}((B^{n,1}_{\pi/2})_\epsilon)}{{\rm vol}(\mathbb{S}^n(1))}= \frac{{\rm vol}(B^{n,1}_{\pi/2+\epsilon})}{{\rm vol}(\mathbb{S}^n(1))}\\&= \frac{\int _0^{\frac{\pi}{2}+\epsilon} (\sin t)^n dt }{\int _0^\pi (\sin t)^n dt   }
+\end{aligned}
+$$
+
+To see how to obtain equality (\ref{eq2}) from this point, we remark that , given $\epsilon \in [0,\frac{\pi}{2}]$,  in the intervals $[0, \frac{\pi}{2}+\epsilon] \subseteq [0,\pi]$, the function $\sin t$ attains its maximum in $t=\frac{\pi}{2}$, so, when $n \to \infty$, the function $\sin^n t$ has a \lq\lq peak" at $\frac{\pi}{2}$ and is negligible out of this value. 
+
+Hence, 
+$$\lim_{n \to \infty} \frac{\int _0^{\frac{\pi}{2}+\epsilon} (\sin t)^n dt }{\int _0^\pi (\sin t)^n dt   }=1$$
+\bigskip
+
+Now, we are going to focus on another concentration of measure phenomenon, what happens in this case around any totally geodesic equator $\mathbb{S}^{n-1}(1)$ of the sphere $ \mathbb{S}^{n}(1)$, and which can be deduced from the general measure concentration described above. 
+
+In order to describe it and to give an idea of its proof, we are going to consider the particular case constituted by the equator 
+$$E=\{(x_1,\ldots,x_{n+1})\in \mathbb{S}^{n}(1)\, :\, x_{n+1}=0\}$$
+together the domain $\Omega_\epsilon \subseteq  \mathbb{S}^{n}(1) $, (called $\epsilon$-strip around the equator $E$, $0<\epsilon <1$), given by
+
+$$
+\Omega_\epsilon:=\left\lbrace  (x_1,\ldots,x_{n+1})\in \mathbb{S}^{n}(1)\, :\, -\epsilon<x_{n+1}<\epsilon\right\rbrace.
+$$
+
+\begin{center}
+\includegraphics[scale=0.35]{eferaifranja.pdf}
+\end{center}
+
+Then, the measure concentration around the equator $E$ can be stated as  follows: 
+
+\begin{corollary}{Measure concentration around the equator $E$}\label{equator}\
+
+Given the $\epsilon$-strip $\Omega_\epsilon$ around the equator $E$, we have that
+$$
+\frac{{\rm vol}\left(\Omega_\epsilon\right)}{{\rm vol}\left(\mathbb{S}^n(1)\right)}=
+2\big(\frac{{\rm vol}(\mathbb{S}^{n+}_{\epsilon} )}{{\rm vol}(\mathbb{S}^n(1))}-\frac{1}{2}\big)
+$$
+ and hence, for $0<\epsilon<1$ we have
+$$
+\lim_{n\to \infty}\frac{{\rm vol}\left(\Omega_\epsilon\right)}{{\rm vol}\left(\mathbb{S}^n(1)\right)}=1
+$$
+\end{corollary}
+
+This Corollary \ref{equator} comes from the concentration of measure stated in Theorem \ref{measurecon} in the following way: let us denote as $\mathbb{S}^{n+}$ the half sphere centered at the north pole and  as $\mathbb{S}^{n-}$ the half sphere centered at the south pole. Then, the $\epsilon$-strip around the equator can be expressed, in terms of the $\epsilon$-fattenings $\mathbb{S}^{n+}_{\epsilon}$ and $\mathbb{S}^{n-}_{\epsilon}$ as
+$$\Omega_\epsilon=\mathbb{S}^{n+}_{\epsilon} \cap\mathbb{S}^{n-}_{\epsilon} $$
+\noindent where the domains $A^+=\mathbb{S}^{n+}$ and $A^-= \mathbb{S}^{n-}$ concentrates measure in the Sphere in the sense of the above Theorem \ref{measurecon}. On the other hand, as ${\rm vol}(\mathbb{S}^{n+}_\epsilon)={\rm vol}(\mathbb{S}^{n-}_\epsilon)$, then
+$$
+\frac{{\rm vol}\left(\Omega_\epsilon\right)}{{\rm vol}\left(\mathbb{S}^n(1)\right)}=
+2\big(\frac{{\rm vol}(\mathbb{S}^{n+}_{\epsilon} )}{{\rm vol}(\mathbb{S}^n(1))}-\frac{1}{2}\big)
+$$
+
+\begin{center}
+\vskip-0.8ex
+\includegraphics[scale=0.13]{concentration2}
+\end{center}
+
+
+\noindent Hence, applying Theorem \ref{measurecon} to the domain $A^+=\mathbb{S}^{n+}$, we have that  
+$$
+\lim_{n\to \infty}\frac{{\rm vol}(\mathbb{S}^{n+}_\epsilon)}{{\rm vol}\left(\mathbb{S}^n(1)\right)}=1
+$$
+\noindent so we can conclude 
+$$
+\lim_{n\to \infty}\frac{{\rm vol}\left(\Omega_\epsilon\right)}{{\rm vol}\left(\mathbb{S}^n(1)\right)}=1
+$$
+
+The conclusion is that for  \lq\lq very large'' dimension,  almost all measure in the Sphere is concentrated surrounding  the equator. 
+
+\begin{remark}
+ We would like to draw attention to the following observation, which only apparently constitutes a paradox that would refute the last Corollary: let us consider an small $\epsilon >0$. Then, by virtue of Corollary \ref{equator}, as the dimension increases, the equatorial band occupies more and more area of the sphere, so that the two complementary big caps to the band have a small volume compared to the total volume of the sphere. 
+ 
+ Let us now consider a rotation of the equatorial strip, (an isometry of the sphere acting on the strip), so that the image due to this rotation of the strip is a domain in the sphere that cuts the two previous big caps. Since the image by the isometry of the band is a domain with the same area as the band and it occupies a large amount of area of the sphere, all this area will be concentrated outside the intersection with the caps, (which have small area). 
+ 
+ The conclusion is that the entire area of the band will be concentrated in two small squares, antipodal and disconnected, which are the result of intersecting the old band prior to the rotation with the new one, (see picture below).
+ \bigskip
+ 
+ \begin{center}
+\vskip-0.8ex
+\includegraphics[scale=0.3]{contraejemplo2}
+\end{center}
+ 
+ \bigskip
+ This fact not only does not contradict the corollary, but we must observe that, if we take, within one of these small squares, a spherical cap centered on it and circumscribed in it, we have that, when the dimension tends to infinity, the area of this cap tends to zero while the area of the square tends to infinity.
+\end{remark}
+
+We use this last \lq\lq equatorial" measure concentration to introduce the notion of  {\em extrinsic equatorial concentration of measure}  of the submanifold $\Sigma \subseteq \mathbb{S}^n(1)$. 
+
+Let us consider $x: \Sigma^m \to \mathbb{S}^n(1)$ be a complete isometric immersion of the  $m$-dimensional manifold $\Sigma^m$ in the sphere. Any totally geodesic equator $\mathbb{S}^{n-1}(1)$ on a sphere  $\mathbb{S}^n(1)$ can be described in terms of the intrinsic distance of its points to a given fixed point $p$, (and, in this sense, the equator $E$ that has served above to exemplify the phenomenon of concentration of the equatorial measure, is the set of points that are distant from the north pole by a distance equal to $\frac{\pi}{2}$). This description is given in the following way: given a point $p \in \mathbb{S}^n(1)$, \emph{the equator of $\mathbb{S}^n(1)$ with respect to $p$} is defined as 
+   
+ $$
+    %\begin{aligned}
+E(p):=\left\{x=(x_1,\cdots,x_{n+1})\in \mathbb{S}^n(1)\, :\,\,{\rm dist}^{\mathbb{S}^n(1)}(p,x)=\frac{\pi}{2} \right\}
+%\end{aligned}
+    $$ \noindent where 
+    $${\rm dist}^{\mathbb{S}^n(1)}(p,x)=\angle{(p,x)}=arc\cos(p\cdot x)$$
+    \noindent  denotes the intrinsic distance in $\mathbb{S}^n(1)$ between the points $p$ and $x$. 
+    
+     Then, the  \emph{the strip around the equator $E(p)$} is defined as the set:
+    
+
+$$
+\begin{aligned}
+\Omega(p,\epsilon)&=\left\lbrace x\in \mathbb{S}^{n}(1)\, : \, \frac{\pi}{2}-\epsilon<{\rm dist}^{\mathbb{S}^{n}(1)}(p,x)=\angle{(p,x)}<\frac{\pi}{2}+\epsilon\right\rbrace\\&=\left\lbrace x\in \mathbb{S}^{n}(1)\, : \,   \cos\left({\rm dist}^{\mathbb{S}^{n}(1)}(p,x)\right)\in ( -\sin\epsilon,\sin\epsilon) \right\rbrace
+\end{aligned}
+$$
+
+Our main result can be summarized asserting that there is an {\em extrinsic} equatorial concentration of measure when we consider minimal and compact submanifolds $\Sigma^m$ of any co-dimension in the Sphere $\mathbb{S}^n(1)$ and it is stated as follows:
+
+\begin{theorem}
+Let  $x: \Sigma^m \to \mathbb{S}^n(1)$ be an isometric and minimal immersion of the closed $m$-dimensional manifold $\Sigma$ in the sphere  $\mathbb{S}^n(1)$. Then, for any point $p \in \mathbb{S}^n(1)$ and any  $\epsilon \in (0,\pi/2)$ we have 
+
+$$
+1\geq \frac{{\rm vol}\left(x^{-1}(\Omega(p,\epsilon))\right)}{{\rm vol}(\Sigma)}\geq 1- \bigg(\big( 1+2 \sqrt{\frac{\pi}{8}} \big)e^{\frac{3}{4}\frac{m-1}{2}\frac{\bar\epsilon^4}{\bar\epsilon^2-4}}\bigg)
+$$
+
+\noindent where $\bar\epsilon=\sin\epsilon \in (0,1)$.
+
+%1-\big(1+2\sqrt{\frac{\pi}{8}}\big)e^{-\frac{\epsilon^4}{8}(n-1)}
+
+\noindent Hence, for each $p$ and $\epsilon$,
+$$
+\lim_{m\to\infty}\frac{{\rm vol}\left(x^{-1}(\Omega(p,\epsilon))\right)}{{\rm vol}(\Sigma)}=1
+$$
+
+
+\end{theorem}
+
+\begin{remark}\
+
+\begin{enumerate}
+\item In this extrinsic case, the proof is based on the divergence theorem, (rather than on the isoperimetric inequality, as occurs in the intrinsic case).
+
+\item We can recover the {\em intrinsic} equatorial concentration of measure as a corollary of the {\em extrinsic} equatorial  concentration of measure, taking $\Sigma=\mathbb{S}^n(1)$. In fact, if $\Sigma=\mathbb{S}^n(1)$, then $x(\Sigma) =x(\mathbb{S}^n(1))=\mathbb{S}^n(1)$ and hence, 
+$$x^{-1}(\Omega(p,\epsilon))=x(\Sigma) \cap \Omega(p,\epsilon) =\Omega(p,\epsilon)$$
+\noindent so
+$$
+\lim_{n\to\infty}\frac{{\rm vol}\left(x^{-1}(\Omega(p,\epsilon))\right)}{{\rm vol}(\mathbb{S}^n(1))}=\lim_{n\to\infty}\frac{{\rm vol}\left(\Omega(p,\epsilon)\right)}{{\rm vol}(\mathbb{S}^n(1))}=1
+$$
+
+\item  It should rest open the statement of an {\em intrinsic} concentration of measure for compact and minimal submanifolds of the sphere, namely, if $A \subseteq \Sigma$ is a domain with ${\rm vol}(A) \geq \frac{1}{2} {\rm vol}(\Sigma)$, then the $\epsilon$-fattening of $A$ in $\Sigma$ satisfies the inequality
+\begin{equation*}
+1 \geq \frac{{\rm vol}(A_\epsilon)}{{\rm vol}(\Sigma)}\geq 1-\sqrt{\frac{\pi}{8}}e^{-\epsilon^2(m-1)/2}
+\end{equation*}
+\noindent and hence, for all $\epsilon \in [0,\frac{\pi}{2}]$, 
+\begin{equation*}
+\lim_{m\to \infty} \frac{{\rm vol}(A_\epsilon)}{{\rm vol}(\Sigma)}= 1
+\end{equation*}
+ 
+
+Here, the $\epsilon$-fattening of $A$ in $\Sigma$ should be defined as
+$$A_\epsilon:=\left\{x\in \Sigma\, :\, {\rm dist}^{\Sigma}(x,A)<\epsilon\, \right\}
+$$
+
+\end{enumerate}
+\end{remark}
+
+
+
+%%%%%%%%%%%%%%%%%
+% \subsection{Outline}
+%%%%%%%%%%%%%%%%%
+\subsection{Outline}\
+
+The structure of the paper can be outlined as follows: after this Introduction where the notions related with the intrinsic and extrinsic equatorial concentration in the sphere has been presented, as well as a first glimpse of our main result, we shall follow in the following Section \S.2 with the study of the relative position of the closed and minimal submanifolds in the sphere with respect the equators of this sphere, proving a two-piece property which is satisfied by these closed and minimal submanifolds. Finally, we shall state and prove our main theorem in Section \S.3
+
+
+%%%%%%%%%%%%%%%%%
+% \subsection{Acknowledgement}
+%%%%%%%%%%%%%%%%%
+%\subsection{Acknowledgement}\
+
+%The authors  wish to thank...
+
+
+%%%%%%%%%%%%%%%%%%
+%Section: Preliminaires
+%%%%%%%%%%%%%%%%%%%%
+\section{A high-dimensional two-piece property for parabolic and minimal submanifolds of the sphere $\mathbb{S}^n(1)$ }\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Equator of a Sphere with respect a point}\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\medskip
+
+We start with the definition of the {\em equator with respect a point} in the sphere $\ese^n(1)$, and the {\em strip around an equator }.
+
+\begin{definition}
+Given a point $p \in \mathbb{S}^n(1)$, \emph{the equator of $\mathbb{S}^n(1)$ with respect to $p$} is defined as 
+   
+  $$
+    \begin{aligned}
+E(p):&=\left\{x=(x_1,\cdots,x_{n+1})\in \mathbb{S}^n(1)\, :\,\,{\rm dist}^{\mathbb{S}^n(1)}(p,x)=\frac{\pi}{2} \right\}\\&=
+\left\{(x_1,\cdots,x_{n+1})\in \mathbb{S}^n(1)\, : \,\,\, p_1x_1+\cdots+p_{n+1}x_{n+1}=0\right\}
+\end{aligned}
+    $$
+    \end{definition}
+    
+    In its turn, the {\em strip around an equator } is defined as:
+    
+\begin{definition}
+The strip around the equator $E(p)$ is defined as the set:
+    $$
+\begin{aligned}
+\Omega(p,\epsilon)&=\left\lbrace x\in \mathbb{S}^{n}(1)\, : \, \frac{\pi}{2}-\epsilon<{\rm dist}^{\mathbb{S}^{n}(1)}(p,x)=\angle{(p,x)}<\frac{\pi}{2}+\epsilon\right\rbrace\\&=\left\lbrace x\in \mathbb{S}^{n}(1)\, : \,   \cos\left({\rm dist}^{\mathbb{S}^{n}(1)}(p,x)\right)\in ( -\sin\epsilon,\sin\epsilon) \right\rbrace
+\end{aligned}
+$$
+
+\noindent Hence, as $\epsilon \in (0,\frac{\pi}{2})$, if we put $\bar \epsilon=\sin \epsilon \in (0,1)$, then
+$$
+\Omega(p,\epsilon) =\left\lbrace x\in \mathbb{S}^{n}(1)\, : \, -\bar \epsilon<\cos\left({\rm dist}^{\mathbb{S}^{n}(1)}(p,x)\right)<\bar \epsilon\right\rbrace
+$$
+\end{definition}
+
+With these definitions at hand, it is evident that for any point $q\in E(p)$, 
+        $$
+{\rm dist}^{\mathbb{S}^n(1)}(p,q)=\frac{\pi}{2}={\rm dist}^{\mathbb{S}^n(1)}(-p,q)
+        $$
+        \noindent where $-p$ denotes the antipodal point of $p \in \mathbb{S}^{n}(1)$. It is also evident  that any equator in the sphere $\mathbb{S}^n(1)$ is an equator with respect to some $p$.
+        
+     Let us consider now $x: \Sigma^m \to \mathbb{S}^n(1)$  a complete isometric immersion of the  $m$-dimensional manifold $\Sigma^m$ in the sphere.  A natural question that arises in this context is to ask ourselves about the position of the submanifold with respect to the equators of the ambient sphere. 
+     
+     In fact, when $\Sigma=\mathbb{S}^{1}(1)$ is a great circle isometrically immersed in the sphere $\mathbb{S}^{2}(1)$, it is not hard to show that then $\Sigma$ intersects {\em all} the equators of $ \mathbb{S}^{2}(1)$, (which are the great circles of the $2$-dimensional sphere).
+     
+     When the dimension of the ambient sphere is $3$, A. Ros showed in \cite{R} the following {\em Two-piece property}, which implies a more general intersection result to that described above for the two-dimensional case: 
+     
+      \begin{theorem}
+   Every equator of the 3-sphere $\mathbb{S}^3(1)$
+divides each embedded closed (compact, without boundary) minimal surface in exactly two open connected pieces.
+\end{theorem}
+
+  Therefore,  a natural question which arises in this context is following: under what conditions, (topological, analytical, curvature restrictions, etc), it is guaranteed, (for any dimension of the ambient sphere and any co-dimension of the immersed submanifold), that the submanifold cuts all the equators of the ambient sphere, namely
+        $$x(\Sigma) \cap E(p) \neq \emptyset\,\,\,\forall p \in \mathbb{S}^n(1)$$
+        
+        \noindent and hence, will intersect all the $\epsilon$-strips
+        $$x(\Sigma) \cap \Omega(p,\epsilon) \neq \emptyset?, (\text{i.e.}, x^{-1}(\Omega(p,\epsilon))\neq \emptyset\,\,\,\forall p \in \mathbb{S}^n(1))$$
+   
+    Our first result describes  the position of the submanifold with respect the equators of $\mathbb{S}^n(1)$ and their strips, when the submanifold is connected and parabolic and takes the form of a kind of a high dimensional two-piece property:
+ 
+\begin{theorem}\label{twopiecegeneral}
+
+Let $x:\Sigma^m \to \mathbb{S}^n(1)$ be a complete, connected and minimal isometric immersion, and let $p$ be any point of $\mathbb{S}^n(1)$. Suppose that $\Sigma$ is parabolic. Then
+    \begin{itemize}
+        \item Either $x(\Sigma)\subseteq E(p)$, 
+        \item or, $x(\Sigma)\cap E(p)\neq \emptyset$
+            \end{itemize}
+            and  hence, in any case,  $x(\Sigma) \cap \Omega(p,\epsilon) \neq \emptyset$, ($x^{-1}(\Omega(p,\epsilon))\neq \emptyset$).
+\end{theorem}
+
+\begin{proof}\
+
+ Given $p\in \mathbb{S}^n(1)$, the \emph{extrinsic distance function} with respect to $p$ is the function given by
+$$
+\begin{aligned}
+r_p:\Sigma \to \mathbb{R}, \quad q\mapsto r_p(x(q)):&={\rm dist}^{\mathbb{S}^n(1)}(p,x(q))\\&=\angle{(p,x(q))}=arc\cos(p\cdot x(q))
+\end{aligned}
+$$
+\noindent  so, given $q \in \Sigma$, with $x(q)=(p_1,...,p_{n+1}) \in \mathbb{S}^n(1)$, we have that
+$$
+\cos(r_p(x(q))=p\cdot x(q) = p_1x_1+\cdots+p_{n+1}x_{n+1}
+$$
+ and hence, $\cos\circ r_p$ is smooth on $\Sigma$. 
+ 
+ We need the following
+\begin{lemma}\label{coslema}
+Let $x:\Sigma^m \to \mathbb{S}^n(1)$ be a complete and minimal isometric immersion, and let $p$ be any point of $\mathbb{S}^n(1)$. Then, for all $q \in \Sigma$,
+ \begin{equation}\label{cos}
+%\begin{aligned}
+\Delta^\Sigma \cos(r_p(x(q)))=-m\cos(r_p(x(q)))
+%\end{aligned}
+\end{equation}
+\end{lemma}
+\begin{proof}
+  Applying Takahasi's Lemma, we have,  as $x$ is minimal, that 
+  $$\Delta^\Sigma x_i=-m x_i\,\,\forall i=1,...,n+1$$
+  \noindent  so we conclude 
+
+  $$
+\begin{aligned}
+\Delta^\Sigma \cos(r_p(x(q))=&p_1\Delta^\Sigma x_1+\cdots+p_{n+1}\Delta^\Sigma x_{n+1}\\&=-m\left(p_1x_1+\cdots+p_{n+1}x_{n+1}\right)=-m\cos(r_p(x(q))
+\end{aligned}
+$$
+\end{proof}
+
+ \noindent To prove  the Theorem, first, let us observe that, if 
+$$\cos\circ r_p(x(q))=c \,\,\forall q \in \Sigma$$
+\noindent then 
+$$\Delta^\Sigma \cos(r_p(x(q))=-m\cos\circ r_p(x(q))=0,\,\forall q \in \Sigma$$
+\noindent so $r_p(x(q))=\frac{\pi}{2} \,\,\forall q \in \Sigma$ and hence, ij this case we have that $$x(\Sigma) \subseteq E(p)$$
+
+Now,  let us suppose that $x(\Sigma) \not\subseteq E(p)$ and that $x(\Sigma)\cap  E(p)=\emptyset$. Then $\cos\circ r_p$ is not constant on $\Sigma$ and, moreover, as $\Sigma$ is connected,  if $x(\Sigma)\cap  E(p)=\emptyset$ then $r_p(x(q)) \in [0,\frac{\pi}{2})\,\,\forall q \in \Sigma$ or $r_p(x(q)) \in (\frac{\pi}{2},\pi]\,\,\forall q \in \Sigma$. To see this last assertion, let us note that, in case there are points $q_1, q_2 \in \Sigma$ such that $r_p(q_1) \in [0,\frac{\pi}{2})$ and  $r_p(q_2) \in (\frac{\pi}{2},\pi]$, then we can conclude that there are points $q_1, q_2 \in \Sigma$ such that $\cos(r_p(q_1)) >0$ and  $\cos (r_p(q_2)) <0$, and therefore, $\Sigma$ is not connected because $\Sigma=\{ q \in \Sigma: \cos(r_p(x(q)) >0\}\cup \{ q \in \Sigma: \cos(r_p(x(q))< 0\} $
+
+We can conclude then that $\cos\circ r_p$ is a bounded non-constant subharmonic, (superharmonic), function defined on $\Sigma$, which is a contradiction with the parabolicity of $\Sigma$.
+
+ Hence, if  $x(\Sigma) \not\subseteq E(p)$, then $x(\Sigma)\cap  E(p)\neq \emptyset$
+
+\end{proof}
+
+\begin{corollary}
+	Let  $x: \Sigma^m \to \mathbb{S}^n(1)$ be an isometric and minimal immersion of a closed, (compact without boundary), $m$-dimensional manifold $\Sigma$ in the sphere  $\mathbb{S}^n(1)$, and let $p$ be any point of $\mathbb{S}^n(1)$.  Then
+    \begin{itemize}
+        \item Either $x(\Sigma)\subseteq E(p)$, 
+        \item or, $x(\Sigma)\cap E(p)\neq \emptyset$
+            \end{itemize}
+            and  hence, in any case,  $x(\Sigma) \cap \Omega(p,\epsilon) \neq \emptyset$, ($x^{-1}(\Omega(p,\epsilon))\neq \emptyset$).
+\end{corollary}
+\begin{proof}
+Note that, given the compact, (and hence, parabolic), and minimal submanifold $\Sigma$, we can apply  theorem \ref{twopiecegeneral} to each of its connected components $\Sigma_i$, (which are all of them connected, minimal and parabolic submanifolds isometrically immersed in  $\mathbb{S}^n(1)$)  to conclude that, for all $i$, $x(\Sigma_i) \cap \Omega(p,\epsilon) \neq \emptyset$, and hence $x(\Sigma) \cap \Omega(p,\epsilon) \neq \emptyset$
+
+%because all the connected components of $\Sigma$ will be parabolic.
+\end{proof}
+
+In conclusion, in this first result, we have seen that when $x: \Sigma^m \to \mathbb{S}^n(1)$ is  compact and minimal, then \emph{always} there are points of $x(\Sigma)$ included in any equatorial strip, some in one part of the equator, some in the other part.
+
+
+
+%%%%%%%%%%%%%%%%%%
+\section{Main result}
+%%%%%%%%%%%%%%%%%%%%
+
+In the above Section we have seen that when $x: \Sigma^m \to \mathbb{S}^n(1)$ is  compact and minimal, then \emph{always} there are points of $x(\Sigma)$ included in any equatorial strip, some in one part of the equator, some in the other part. The question now is to estimate the \lq\lq amount" of such points in $x(\Sigma)$ which are included in these equatorial strips. 
+
+We shall see that, as occurs in the intrinsic case, as the dimension increases, the \lq\lq greater'' the number of points of the submanifold within the equatorial strips. Namely, we observe an \emph{ extrinsic measure concentration phenomenon} satisfied by $x: \Sigma\to \mathbb{S}^n(1)$
+
+These ideas are stated in the following results:
+
+\begin{theorem}[Main I]\label{extrinsicconc1}
+Let  $x: \Sigma^m \to \mathbb{S}^n(1)$ be an isometric and minimal immersion of the closed $m$-dimensional manifold $\Sigma$ in the sphere  $\mathbb{S}^n(1)$. Then, for any point $p \in \mathbb{S}^n(1)$ and any  $\epsilon \in (0,\pi/2)$ we have 
+
+$$
+ 1 \geq \frac{{\rm vol}\left(x^{-1}(\Omega(p,\epsilon))\right)}{{\rm vol}(\Sigma)}\geq1-\frac{1}{(m+1)\sin^2\epsilon}
+$$
+
+\noindent Hence, for each $p$ and $\epsilon$,
+$$
+\lim_{m\to\infty}\frac{{\rm vol}\left(x^{-1}(\Omega(p,\epsilon))\right)}{{\rm vol}(\Sigma)}=1
+$$
+\end{theorem}
+\begin{proof}\
+
+
+Given the extrisic distance function $r_p: \Sigma \rightarrow \erre$, we know that
+
+\begin{equation}\label{eqOne}
+\begin{aligned}
+\Div^\Sigma\big(\cos (r_p(x(q)))\,\nabla^\Sigma \cos(r_p(x(q))\big)&=\cos(r_p(x(q))\big(\Delta^\Sigma\cos(r_p(x(q))\big)\\&+\Vert \nabla^\Sigma \cos(r_p(x(q))\Vert^2
+\end{aligned}
+\end{equation}
+
+ \noindent then, as $\Delta^\Sigma \cos(r_p(x(q))=-m\cos(r_p(x(q)))$), and integrating equation (\ref{eqOne}) along $\Sigma$, we have, using that $\Sigma$ is compact and divergence theorem:
+
+
+$$
+\begin{aligned}
+m\int_\Sigma& \cos^2(r_p(x(q))=\int_\Sigma\Vert \nabla^{\Sigma}  \cos(r_p(x(q))\Vert^2-\int_\Sigma \Div^\Sigma\big(\cos(r_p(x(q))\nabla^\Sigma \cos(r_p(x(q))\big)
+\\&=\int_\Sigma \sin^2(r_p(x(q)))\Vert \nabla^{\Sigma} r_p(x(q))\Vert^2\leq \int_\Sigma \sin^2(r_p(x(q)))={\rm vol}(\Sigma)- \int_\Sigma \cos^2(r_p(x(q))
+\end{aligned}
+$$
+
+Hence, as 
+$$m\int_\Sigma \cos^2(r_p(x(q))\leq {\rm vol}(\Sigma)- \int_\Sigma \cos^2(r_p(x(q))$$ \noindent then
+
+$$
+(m+1)\int_\Sigma \cos^2(r_p(x(q))\leq {\rm vol}(\Sigma)
+$$
+
+Which implies, as  $\Sigma-x^{-1}(\Omega(p,\epsilon)) \subseteq \Sigma$,
+$$
+(m+1)\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))} \cos^2(r_p(x(q))\leq {\rm vol}(\Sigma)
+$$
+
+ The strip around the equator $E(p)$ is ($\bar \epsilon=\sin \epsilon$):
+
+$$
+\Omega(p,\epsilon) =\left\lbrace x\in \mathbb{S}^{n}(1)\, : \, -\bar \epsilon<\cos\left({\rm dist}^{\mathbb{S}^{n}(1)}(p,x)\right)<\bar \epsilon\right\rbrace
+$$
+hence, as $r_p(q)\equiv r_p(x(q)):={\rm dist}^{\mathbb{S}^{n}(1)}(p,q)\,\,\forall q \in \Sigma$
+
+$$
+%\begin{aligned}
+x^{-1}(\Omega(p,\epsilon))=\left\lbrace q \in \Sigma\,:\, -\bar \epsilon<\cos\left(r_p(x(q)))\right)<\bar \epsilon\right\rbrace
+%\end{aligned}
+$$
+\bigskip
+
+\noindent then for all $q \in\Sigma-x^{-1}(\Omega(p,\epsilon))$, we have
+$$ \bar\epsilon^2 \leq \cos^2(r_p(x(q))$$
+
+
+Therefore 
+ $$
+ \begin{aligned}
+(m+1)\bar\epsilon^2\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))} 1&\leq 
+(m+1)\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))} \cos^2(r_p(x(q))\\&\leq {\rm vol}(\Sigma)
+\end{aligned}
+$$
+
+Hence
+$$
+0 \leq(m+1)\bar \epsilon^2\left({\rm vol}(\Sigma)-{\rm vol}(x^{-1}(\Omega(p,\epsilon)))\right)\leq {\rm vol}(\Sigma)
+$$
+\noindent so
+$$
+0 \leq (m+1)\bar \epsilon^2\bigg(1- \frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\bigg)\leq 1
+$$
+\noindent and hence
+$$
+\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\geq 1-\frac{1}{(m+1)\bar\epsilon^2}
+$$
+\end{proof}
+
+
+\begin{theorem}[Main II]\label{extconc2}
+Let  $x: \Sigma^m \to \mathbb{S}^n(1)$ be an isometric and minimal immersion of the closed $m$-dimensional manifold $\Sigma$ in the sphere  $\mathbb{S}^n(1)$. Then, for any point $p \in \mathbb{S}^n(1)$ and any  $\epsilon \in (0,\pi/2)$ we have 
+
+$$
+1\geq \frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\geq 1- \bigg(\big( 1+2 \sqrt{\frac{\pi}{8}} \big)e^{\frac{3}{4}\frac{m-1}{2}\frac{\bar\epsilon^4}{\bar\epsilon^2-4}}\bigg)
+$$
+
+\noindent where $\bar\epsilon=\sin\epsilon \in (0,1)$.
+\medskip
+
+Hence, for each $p$ and $\epsilon$,
+$$
+\lim_{m\to\infty}\frac{{\rm vol}\left(x^{-1}(\Omega(p,\epsilon))\right)}{{\rm vol}(\Sigma)}=1
+$$
+
+\end{theorem}
+\begin{proof}\
+
+We need the following 
+
+\begin{lemma}
+Let  $x: \Sigma^m \to \mathbb{S}^n(1)$ be an isometric and minimal immersion of the closed $m$-dimensional manifold $\Sigma$ in the sphere  $\mathbb{S}^n(1)$. Then
+
+\begin{equation}\label{lemmaformula1}
+\int_\Sigma \cos^{2k}(r_p(x(q))) \leq \frac{\int_{\mathbb{S}^m(1)} \cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q}))}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{equation}
+\noindent where  $\widetilde{x}: \mathbb{S}^m(1) \rightarrow \mathbb{S}^n(1)$ is the totally geodesic immersion of $\ese^m(1)$ in $\ese^n(1)$.   
+
+As a consequence, we have the inequality,  for a given $t>0$:
+
+\begin{equation}\label{lemmaformula2}
+%\begin{aligned}
+\int_{\Sigma} e^{t \cos^2r_p}  \leq\frac{\int_{\ese^m(1)} e^{t \cos^2\widetilde{r}_p}}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+%\end{aligned}
+\end{equation}
+\end{lemma}
+\begin{proof}
+
+Let us apply an inductive argument to prove inequality (\ref{lemmaformula1}): we are going to see first that this inequality is true for $k=1$. 
+
+Given the extrinsic distance function $r_p: \Sigma \rightarrow \erre$, we know that
+
+\begin{equation}\label{equn}
+\begin{aligned}
+\Div^\Sigma\big(\cos (r_p(x(q))))\,\nabla^\Sigma \cos(r_p(x(q)))\big)&=\cos(r_p(x(q)))\big(\Delta^\Sigma\cos(r_p(x(q)))\big)\\&+\Vert \nabla^\Sigma \cos(r_p(x(q)))\Vert^2
+\end{aligned}
+\end{equation}
+
+ \noindent Then, as $\Delta^\Sigma \cos(r_p(x(q))=-m\cos(r(q))$, and integrating equation (\ref{equn}) along $\Sigma$, we have, using that $\Sigma$ is compact and divergence theorem:
+
+\begin{equation}\label{eqdoss}
+\begin{aligned}
+m\int_\Sigma& \cos^2(r_p(x(q)))=\int_\Sigma\Vert \nabla^{\Sigma}  \cos(r_p(x(q)))\Vert^2\\&-\int_\Sigma \Div^\Sigma\big(\cos(r_p(x(q)))\nabla^\Sigma \cos(r_p(x(q)))\big)
+\\&=\int_\Sigma \sin^2(r_p(x(q)))\Vert \nabla^{\Sigma} r_p(x(q))\Vert^2\leq \int_\Sigma \sin^2(r_p(x(q)))\\&={\rm vol}(\Sigma)- \int_\Sigma \cos^2(r_p(x(q)))
+\end{aligned}
+\end{equation}
+
+Hence, as 
+$$m\int_\Sigma \cos^2(r_p(x(q)))\leq {\rm vol}(\Sigma)- \int_\Sigma \cos^2(r_p(x(q)))$$ \noindent then
+
+\begin{equation}\label{eqtress}
+(m+1)\int_\Sigma \cos^2(r_p(x(q)))\leq {\rm vol}(\Sigma)
+\end{equation}
+
+Which implies, as  $\Sigma-x^{-1}(\Omega(p,\epsilon)) \subseteq \Sigma$,
+\begin{equation}\label{eqcu}
+(m+1)\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))} \cos^2(r_p(x(q)))\leq {\rm vol}(\Sigma)
+\end{equation}
+
+
+Inequality (\ref{eqtress}) can be written as:
+\begin{equation}\label{eqtressBis}
+\int_\Sigma \cos^2(r_p(x(q))) \leq \frac{1}{m+1} {\rm vol}(\Sigma)
+\end{equation}
+
+Now, we consider the totally geodesic submanifold $\widetilde{x}: \mathbb{S}^m(1) \rightarrow \mathbb{S}^n(1)$, the point $p \in \ese^n(1)$ and the extrinsic distance function with respect to $p$ in $\ese^m(1)$, given by
+$$
+\begin{aligned}
+\widetilde{r}_p:\ese^m(1) \to \mathbb{R}, \quad \widetilde{q}\mapsto r_p(\widetilde{q}):&={\rm dist}^{\mathbb{S}^n(1)}(p,\widetilde{x}(\widetilde{q}))\\&=\angle{(p,\widetilde{x}(\widetilde{q}))}=arc\cos(p\cdot \widetilde{x}(\widetilde{q}))
+\end{aligned}
+$$
+
+
+As $\ese^m(1)$ is totally geodesic, then
+
+$$\Vert \nabla^{\ese^m(1)}\widetilde{r}_p(\widetilde{q})\Vert^2=1\,\,\,\,\forall \widetilde{q} \in \ese^m(1)$$
+\noindent Therefore, same computations as in equations (\ref{equn}) and (\ref{eqdoss}) but using now the extrinsic function $\widetilde{r}_p$ which gives equalities in the above inequalities lead us to
+\begin{equation}\label{eqcinc}
+\int_{\mathbb{S}^m(1)} \cos^2(\widetilde{r}_p(\widetilde{x}(\widetilde{q}))) = \frac{1}{m+1} {\rm vol}(\mathbb{S}^m(1))
+\end{equation}
+
+Hence, using inequality (\ref{eqtressBis}), we have 
+\begin{equation}\label{eqsis}
+\int_\Sigma \cos^2(r_p(x(q))) \leq \frac{\int_{\mathbb{S}^m(1)} \cos^2(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{equation}
+
+and we have proved that the inequality (\ref{lemmaformula1}) is true for $k=1$.
+
+Assuming that it is true for $k >1$, namely, that
+\begin{equation}\label{eqsisBis}
+\int_\Sigma \cos^{2k}(r_p(x(q))) \leq \frac{\int_{\mathbb{S}^m(1)} \cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{equation}
+
+
+\noindent  we shall see that holds for $k+1$ in the following way: computing as in (\ref{equn}), we have 
+
+\begin{equation}\label{equnBis}
+\begin{aligned}
+&\Div^\Sigma\big(\cos^{2k+1} (r_p(x(q)))\,\nabla^\Sigma \cos(r_p(x(q))\big)\\&=\cos^{2k+1}(r_p(x(q)))\big(\Delta^\Sigma\cos(r_p(x(q)))\big)\\&+(2k+1) \cos^{2k}(r_p(x(q)))\Vert \nabla^\Sigma \cos(r_p(x(q)))\Vert^2
+\end{aligned}
+\end{equation}
+
+ \noindent Then, as $\Delta^\Sigma \cos(r_p(x(q))=-m\cos(r(q))$, and integrating equation (\ref{equnBis}) along $\Sigma$, we have, using that $\Sigma$ is compact and divergence theorem:
+
+\begin{equation}\label{eqdossBis}
+\begin{aligned}
+m\int_\Sigma& \cos^{2(k+1)}(r_p(x(q)))=(2k+1)\int_\Sigma\cos^{2k}(r_p(x(q)))\Vert \nabla^{\Sigma}  \cos(r_p(x(q)))\Vert^2\\&-\int_\Sigma \Div^\Sigma\big(\cos^{2k+1}(r_p(x(q)))\nabla^\Sigma \cos(r_p(x(q)))\big)
+\\&=(2k+1)\int_\Sigma \cos^{2k}(r_p(x(q)))\sin^2(r_p(x(q)))\Vert \nabla^{\Sigma} r_p(x(q))\Vert^2\\&=(2k+1)\int_\Sigma \cos^{2k}(r_p(x(q)))(1-\cos^2(r_p(x(q))))\Vert \nabla^{\Sigma} r_p(x(q))\Vert^2\\&\leq (2k+1)\int_\Sigma \cos^{2k}(r_p(x(q)))-(2k+1)\int_\Sigma \cos^{2k+2}(r_p(x(q)))
+\end{aligned}
+\end{equation}
+
+\noindent so
+
+\begin{equation}\label{eqdoss2Bis}
+\begin{aligned}
+(m+2k+1)&\int_\Sigma \cos^{2(k+1)}(r_p(x(q)))\leq (2k+1)\int_\Sigma \cos^{2k}(r_p(x(q)))\\ & \leq  (2k+1)\frac{\int_{\mathbb{S}^m(1)} \cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{aligned}
+\end{equation}
+
+On the other hand, same computations than in (\ref{eqdossBis}), but when we consider the totally geodesic immersion of $\ese^m(1)$ in $\ese^n(1)$ gives the formula
+
+\begin{equation}\label{eqdoss3Bis}
+\begin{aligned}
+m\int_{\ese^m(1)} \cos^{2(k+1)}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))&=(2k+1)\int_{\ese^m(1)}\cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))\\&-(2k+1)\int_{\ese^m(1)} \cos^{2k+2}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))
+\end{aligned}
+\end{equation}
+\noindent and hence
+
+\begin{equation}\label{eqdoss4Bis}
+%\begin{aligned}
+\int_{\ese^m(1)} \cos^{2(k+1)}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))=\frac{2k+1}{m+2k+1}\int_{\ese^m(1)}\cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))
+%\end{aligned}
+\end{equation}
+
+Finally, using (\ref{eqdoss2Bis}) and (\ref{eqdoss4Bis}) we obtain
+
+
+\begin{equation}\label{eqdoss5Bis}
+\begin{aligned}
+&\int_\Sigma \cos^{2(k+1)}(r_p(x(q)))\leq \frac{2k+1}{m+2k+1}\int_\Sigma \cos^{2k}(r_p(x(q)))\\ & \leq  \frac{2k+1}{m+2k+1}\frac{\int_{\mathbb{S}^m(1)} \cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)\\&=\frac{\int_{\mathbb{S}^m(1)} \cos^{2(k+1)}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{aligned}
+\end{equation}
+
+\medskip
+
+Now, we are going to prove inequality (\ref{lemmaformula2}): given a fixed $t>0$, we have, applying inequality (\ref{lemmaformula1}) that
+
+$$\int_\Sigma\frac{t^k \cos^{2k}(r_p(x(q)))}{k!} \leq \frac{\int_{\mathbb{S}^m(1)}\frac{t^k \cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{k!}}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)$$
+
+\noindent so, applying dominated convergence theorem and the power series expansion of the exponential function, we have, for a given $t>0$:
+$$
+\begin{aligned}
+\int_{\Sigma} e^{t \cos^2r_p} &=\sum_{k=0}^\infty \int_\Sigma\frac{t^k \cos^{2k}(r_p(x(q)))}{k!} \\&\leq 
+\sum_{k=0}^\infty \frac{\int_{\mathbb{S}^m(1)}\frac{t^k \cos^{2k}(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}{k!}}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)=\frac{\int_{\ese^m(1)} e^{t \cos^2\widetilde{r}_p}}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{aligned}
+$$
+
+\end{proof}
+
+Now, given the domain
+
+$$
+%\begin{aligned}
+x^{-1}(\Omega(p,\epsilon))=\left\lbrace q \in \Sigma\,:\, -\bar \epsilon<\cos\left(r_p(x(q)))\right)<\bar \epsilon\right\rbrace \subseteq \Sigma
+%\end{aligned}
+$$
+
+
+\noindent we have that, for all $q \in x^{-1}(\Omega(p,\epsilon))$, 
+$$  \cos^2(r_p(x(q)))\leq \bar\epsilon^2 $$ 
+\noindent and hence, for every $t >0$, and for all $q \in x^{-1}(\Omega(p,\epsilon))$, $$t\cos^2(r_p(x(q)))\leq t\bar\epsilon^2$$
+\noindent so $$e^{t\cos^2(r_p(x(q)))}\leq e^{t\bar\epsilon^2} $$
+
+On the other hand,  for all $q \in\Sigma-x^{-1}(\Omega(p,\epsilon))$, 
+$$ \bar\epsilon^2 \leq \cos^2(r_p(x(q)))\leq 1$$
+\noindent and hence, for every $t >0$, and for all $q \in \Sigma- x^{-1}(\Omega(p,\epsilon))$,$$t\bar\epsilon^2\leq t \cos^2(r_p(x(q)))\leq t$$
+\noindent so $$e^{t\bar\epsilon^2} \leq e^{t\cos^2(r_p(x(q)))} \leq e^t$$
+
+
+Therefore, using inequality (\ref{eqsis}), we conclude
+ \begin{equation}\label{eqsisBis}
+ \begin{aligned}
+e^{t\bar\epsilon^2}&\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))} 1\leq 
+\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))}e^{t \cos^2(r_p(x(q)))}\\&\leq \int_\Sigma e^{t\cos^2(r_p(x(q)))} \leq \frac{\int_{\mathbb{S}^m(1)}e^{t \cos^2(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)
+\end{aligned}
+\end{equation}
+
+
+
+\noindent Now, let us consider in the sphere $\mathbb{S}^m(1)$ the domain, (which is the strip or radius $\frac{\bar\epsilon^2}{2}$ around the equator in $E(p)\subseteq \ese^m(1)$):
+
+$$
+%\begin{aligned}
+D(\frac{\bar\epsilon}{2}):=\left\lbrace \widetilde{q} \in \ese^m(1)\,:\, -\frac{\bar \epsilon}{2}<\cos\left(\widetilde{r}_p(\widetilde{q}))\right)<\frac{\bar \epsilon}{2}\right\rbrace \subseteq \ese^m(1)
+%\end{aligned}
+$$
+
+Then, we have that for all $\widetilde{q} \in D(\frac{\bar\epsilon}{2})$, 
+$$\cos^2(\widetilde{r}_p(\widetilde{q}))\leq  \frac{\bar\epsilon^2}{4} $$
+
+\noindent and hence, for every $t >0$, and for all $\widetilde{q} \in  D(\frac{\bar\epsilon}{2})$, $$t\frac{\bar\epsilon^2}{4} \geq t\cos^2(\widetilde{r}_p(\widetilde{q})$$
+\noindent so $$e^{t\frac{\bar\epsilon^2}{4} } \geq e^{t\cos^2(r_p(x(q)))}$$
+
+\noindent and, for all $\widetilde{q} \in \ese^m(1)-D(\frac{\bar\epsilon}{2})$,
+
+$$\frac{\bar\epsilon^2}{4} \leq \cos^2(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))\leq  1 $$
+
+\noindent and hence, for every $t >0$, and for all $\widetilde{q} \in \Sigma- D(\frac{\bar\epsilon}{2})$,$$t\frac{\bar\epsilon^2}{4}\leq t \cos^2(r_p(\widetilde{q}))\leq t$$
+\noindent so $$e^{t\frac{\bar\epsilon^2}{4}} \leq e^{t\cos^2(r_p(\widetilde{q}))} \leq e^t$$
+
+
+
+\noindent so we have
+\begin{equation}\label{eqset}
+\begin{aligned}
+\int_{\mathbb{S}^m(1)} &e^{t\cos^2(\widetilde{r}_p(\widetilde{q}))} =\int_{D(\frac{\bar\epsilon}{2})}e^{t \cos^2(\widetilde{r}_p(\widetilde{q}))} \\&+\int_{\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})} e^{t\cos^2(\widetilde{r}_p(\widetilde{q}))}
+\leq e^{t\frac{ \bar\epsilon^2}{4} }{\rm vol}(D(\frac{\bar\epsilon}{2})) 
+\\&+e^t \big({\rm vol}\big(\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})\big)
+\end{aligned}
+\end{equation}
+
+\noindent so, from (\ref{eqsisBis}) and (\ref{eqset}),
+
+\begin{equation}\label{eqvuit}
+ \begin{aligned}
+e^{t\bar\epsilon^2}&\big({\rm vol}(\Sigma)-{\rm vol}(x^{-1}(\Omega(p,\epsilon))\big)=e^{t\bar\epsilon^2}{\rm vol}(\Sigma-x^{-1}(\Omega(p,\epsilon))=\\&=e^{t\bar\epsilon^2}\int_{\Sigma-x^{-1}(\Omega(p,\epsilon))} 1 \leq \frac{\int_{\mathbb{S}^m(1)}e^{t \cos^2(\widetilde{r}_p(\widetilde{x}(\widetilde{q})))}}{{\rm vol}(\mathbb{S}^m(1))} {\rm vol}(\Sigma)\\
+&\leq \frac{e^{t\frac{ \bar\epsilon^2}{4} }{\rm vol}(D(\frac{\bar\epsilon}{2})) 
++e^t \big({\rm vol}\big(\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})\big)}{{\rm vol}(\mathbb{S}^m(1))}{\rm vol}(\Sigma)
+\end{aligned}
+\end{equation}
+
+Hence
+\begin{equation}\label{eqnou}
+ \begin{aligned}
+1-&\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\leq &e^{-t\bar\epsilon^2}\bigg(\frac{e^{t\frac{ \bar\epsilon^2}{4} }{\rm vol}(D(\frac{\bar\epsilon}{2}))}{{\rm vol}(\mathbb{S}^m(1))}+\frac{e^t \big({\rm vol}\big(\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})\big)}{{\rm vol}(\mathbb{S}^m(1))}\bigg)
+\end{aligned}
+\end{equation}
+
+And hence, as $\frac{{\rm vol}(D(\frac{\bar\epsilon}{2}))}{{\rm vol}(\mathbb{S}^m(1))}\leq 1$,
+\begin{equation}\label{eqdeu}
+ \begin{aligned}
+&1-\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\leq &e^{-\frac{3}{4}t\bar\epsilon^2}+e^{t(1-\bar\epsilon^2)}\frac{{\rm vol}\big(\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})\big)}{{\rm vol}(\mathbb{S}^m(1))}\end{aligned}
+\end{equation}
+
+Now, we are going to apply Theorem \ref{measurecon} in our context: the set $\ese^m(1)-D(\bar\epsilon/2)$ is the union of two geodesic balls in $\ese^m(1)$ centered at the north pole $p_N$ and the south pole, $p_S$ with respect the equator $E(p)$, namely
+$$\ese^m(1)-D(\frac{\bar\epsilon}{2})=B^{m,1}_{\frac{\pi}{2}-\frac{\bar\epsilon}{2}}(p_N) \cup B^{m,1}_{\frac{\pi}{2}-\frac{\bar\epsilon}{2}}(p_S)$$
+\noindent so, having into account that ${\rm vol}(B^{m,1}_{\frac{\pi}{2}-\frac{\bar\epsilon}{2}}(p_S))={\rm vol}(B^{m,1}_{\frac{\pi}{2}-\frac{\bar\epsilon}{2}}(p_N))$, and that ${\rm vol}(B^{m,1}_{\frac{\pi}{2}-\frac{\bar\epsilon}{2}}(p_N))={\rm vol}\big(\ese^m(1)-B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S)\big)$, we have
+$${\rm vol}\big(\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})\big)=2{\rm vol}(B^{m,1}_{\frac{\pi}{2}-\frac{\bar\epsilon}{2}}(p_N))=2{\rm vol}\big(\ese^m(1)-B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S)\big)$$
+
+\noindent and therefore, by inequality (\ref{eqdeu}),
+
+\begin{equation}\label{eqonze}
+ \begin{aligned}
+&1-\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\leq &e^{-\frac{3}{4}t\bar\epsilon^2}+e^{t(1-\bar\epsilon^2)}\frac{{\rm vol}\big(\mathbb{S}^m(1)-D(\frac{\bar\epsilon}{2})\big)}{{\rm vol}(\mathbb{S}^m(1))}\\ &\leq e^{-\frac{3}{4}t\bar\epsilon^2}+2e^{t(1-\bar\epsilon^2)}\frac{{\rm vol}\big(\ese^m(1)-B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S) \big)}{{\rm vol}(\mathbb{S}^m(1))}\\& =e^{-\frac{3}{4}t\bar\epsilon^2}+2e^{t(1-\bar\epsilon^2)}\bigg(1-\frac{{\rm vol}\big(B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S) \big)}{{\rm vol}(\mathbb{S}^m(1))}\bigg)
+\end{aligned}
+\end{equation}
+
+
+Now, applying Theorem \ref{measurecon} to the geodesic ball $B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S)$ which is a $\bar\epsilon/2$-fattening of the geodesic ball $B^{m,1}_{\frac{\pi}{2}}(p_S)$, which, in its turn, has one half of the volume of the sphere $\ese^m(1)$, we have that
+$$\frac{{\rm vol}(B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S))}{{\rm vol}(\ese^m(1) )} \geq 1-\sqrt{\frac{\pi}{8}}e^{-\frac{\bar\epsilon^4}{4}\frac{m-1}{2}}$$
+\noindent so
+$$1-\frac{{\rm vol}(B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S))}{{\rm vol}(\ese^m(1) )} \leq \sqrt{\frac{\pi}{8}}e^{-\frac{\bar\epsilon^4}{4}\frac{m-1}{2}}$$
+
+\noindent and therefore, from inequality (\ref{eqonze}) we obtain
+
+
+\begin{equation}\label{eqdotze}
+ \begin{aligned}
+&1-\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\leq & e^{-\frac{3}{4}t\bar\epsilon^2}+2e^{t(1-\bar\epsilon^2)}\bigg(1-\frac{{\rm vol}\big(B^{m,1}_{\frac{\pi}{2}+\frac{\bar\epsilon}{2}}(p_S) \big)}{{\rm vol}(\mathbb{S}^m(1))}\bigg)\\& \leq e^{-\frac{3}{4}t\bar\epsilon^2}+2e^{t(1-\bar\epsilon^2)}\bigg(  \sqrt{\frac{\pi}{8}}e^{-\frac{\bar\epsilon^4}{4}\frac{m-1}{2}}  \bigg)
+\end{aligned}
+\end{equation}
+
+
+
+And hence, for all $t >0$ and for all $\epsilon \in (0,\frac{\pi}{2})$, (and $\bar\epsilon \in (0,1)$), we obtain
+
+\begin{equation}\label{eqtretze}
+% \begin{aligned}
+\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\geq 1- \bigg(e^{-\frac{3}{4}t\bar\epsilon^2}+2e^{t(1-\bar\epsilon^2)}\big(  \sqrt{\frac{\pi}{8}}e^{-\frac{\bar\epsilon^4}{4}\frac{m-1}{2}}  \big)\bigg)
+%\end{aligned}
+\end{equation}
+
+Now, let us choose $t=-\frac{m-1}{2}\frac{\bar\epsilon^2}{\bar\epsilon^2-4} >0$, and hence, we obtain
+
+\begin{equation}\label{eqcatorze}
+% \begin{aligned}
+\frac{{\rm vol}(x^{-1}(\Omega(p,\epsilon)))}{{\rm vol}(\Sigma)}\\\geq 1- \bigg(\big( 1+2 \sqrt{\frac{\pi}{8}} \big)e^{\frac{3}{4}\frac{m-1}{2}\frac{\bar\epsilon^4}{\bar\epsilon^2-4}}\bigg)
+%\end{aligned}
+\end{equation}
+
+
+
+
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  %%%%%%%%%%%%%%%%
+\begin{thebibliography}{10}
+%%%%%%%%%%%%%%%%%%%
+  
+
+
+%\bibitem[GreW]{GreW} R. Greene and H. Wu,
+%\textit{Function theory on manifolds which possess a pole}, Lecture Notes in
+%Math., vol. 699, Springer-Verlag, Berlin and New York (1979).
+
+   
+%\bibitem[Gri3]{Gri3} A. Grigor'yan, \textit{Heat kernel and analysis on manifolds},  volume 47 of {\em AMS/IP studies in Advanced Mathematics},  Amer. Math. Soc., Providence, RI; International Press, Boston, MA, (2009).
+
+%\bibitem[HS]{HS} R. Hardt and L. Simon, \textit{Nodal sets for solutions of elliptic equations}, J. Differential Geom.,
+%\textbf{30}(2) (1989), 505--522.
+
+
+\bibitem[MS]{MS} V. D. Milman and G. Schechtman,
+\textit{Asymptotic Theory of Finite Dimensional Normed Spaces, with and Appendix by M. Gromov}, 2nd Printing,
+Lecture Notes in Mathematics, \textbf{1200},  Springer Verlag,
+Berlin (2001).
+
+\bibitem[R]{R} A. Ros,
+\textit{A Two-Piece Property for Compact Minimal Surfaces in a Three-Sphere}, Indiana University Mathematics Journal, \textbf{44}(3) (1995), 841--849
+
+\bibitem[S]{S} T. Sakai, \textit{Riemannian Geometry}, Translations
+of Mathematical Monographs Volume 149, American Mathematical
+Society, 1996.
+
+
+\end{thebibliography}
+
+
+
+\end{document}
+
+

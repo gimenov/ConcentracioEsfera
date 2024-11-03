@@ -1,0 +1,45 @@
+%     AMS-LaTeX v.2 template for use with amsart
+%
+%     Remove any commented or uncommented macros you do not use.
+\documentclass{amsart}
+%\usepackage[notref,notcite]{showkeys}
+\usepackage{extarrows}
+\usepackage{tikz-cd}
+\usetikzlibrary{matrix}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+ \newtheorem{corollary}[theorem]{Corollary}
+ \newtheorem{proposition}[theorem]{Proposition}
+ \newtheorem*{mainthm*}{Main Theorem}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{open}{Open Problem}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%\numberwithin{equation}{section}
+
+%    Absolute value notation
+
+\begin{document}
+
+\title[Measure Concentration]{Monotonicity formula and measure concentration for compact minimal submanifolds of the Sphere}
+\cite{Bengtsson}
+\cite{YauMR0645728}
+\cite{MR0742598}
+\cite{MR0814078}
+\cite{MR3080491}
+\cite{Choi1983559}
+
+\bibliographystyle{plain}
+\bibliography{concentration}
+\end{document}
